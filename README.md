@@ -19,17 +19,17 @@ const rules = [
 		{
 		  pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
 		  style: {color: 'blue'},
-		  onPress: (word) => Linking.openURL(`mailto:${word}`),
+		  onPress: (word:string) => Linking.openURL(`mailto:${word}`),
 		},
 		{
 		  pattern: /^[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/,
 		  style: {color: 'green'},
-		  onPress: (word) => Linking.openURL(word),
+		  onPress: (word:string) => Linking.openURL(word),
 		},
 		{
 		  pattern: /@(\w+)/g,
 		  style: {color:'pink'},
-		  onPress: (username) => {
+		  onPress: (username:string) => {
 			console.log("Clicked username: ",username)
 		  }
 		},
