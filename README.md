@@ -40,7 +40,13 @@ const rules = [
 	rules={rules} 
 	text={"Hello my name is @Turgay and my email is turgay2317@gmail.com my linkedin account is https://www.linkedin.com/in/turgayceylan/"}
 />
+
+
 ```
+
+## Screenshots
+
+<img width="293" alt="Screenshot 2024-06-22 at 18 15 40" src="https://github.com/turgay2317/react-native-highlighter-x/assets/90829101/574084e9-3721-4551-a1fa-f158ff11ba59"/>
 
 ## Contributing
 
