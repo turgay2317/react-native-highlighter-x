@@ -11,11 +11,35 @@ npm install react-native-highlighter-x
 ## Usage
 
 ```js
-import { multiply } from 'react-native-highlighter-x';
+import HightlighterX from 'react-native-highlighter-x';
 
 // ...
 
-const result = await multiply(3, 7);
+const rules = [
+		{
+		  pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+		  style: {color: 'blue'},
+		  onPress: (word) => Linking.openURL(`mailto:${word}`),
+		},
+		{
+		  pattern: /^[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/,
+		  style: {color: 'green'},
+		  onPress: (word) => Linking.openURL(word),
+		},
+		{
+		  pattern: /@(\w+)/g,
+		  style: {color:'pink'},
+		  onPress: (username) => {
+			console.log("Clicked username: ",username)
+		  }
+		},
+		// Add more custom rules as needed
+	  ];
+
+<HighlighterX 
+	rules={rules} 
+	text={"Hello my name is @Turgay and my email is turgay2317@gmail.com my linkedin account is https://www.linkedin.com/in/turgayceylan/"}
+/>
 ```
 
 ## Contributing
