@@ -1,9 +1,20 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-export const HighlighterX = ({ text, rules }) => {
+interface Rule {
+  pattern: RegExp;
+  style?: object;
+  onPress?: (word: string) => void;
+}
 
-  const renderTextWithRules = (text, rules) => text && 
+interface HighlighterXProps {
+  text: string;
+  rules: Rule[];
+}
+
+export const HighlighterX: React.FC<HighlighterXProps> = ({ text, rules }) => {
+
+  const renderTextWithRules = (text: string, rules: Rule[]) => text && 
     text.split(/\r?\n/).map((line, index) => (
       <Text key={index}>
         {renderWordsWithRules(line, rules)}
@@ -11,7 +22,7 @@ export const HighlighterX = ({ text, rules }) => {
       </Text>
     ));
 
-  const renderWordsWithRules = (row, rules) => {
+  const renderWordsWithRules = (row: string, rules: Rule[]) => {
     return row.split(/(\s+)/).map((word, index) => {
       const { style, onPress } = getMatchingRule(word, rules) || {};
       return (
@@ -22,7 +33,7 @@ export const HighlighterX = ({ text, rules }) => {
     });
   };
 
-  const getMatchingRule = (word, rules) => {
+  const getMatchingRule = (word: string, rules: Rule[]): { style?: object, onPress?: (word: string) => void } | null => {
     for (const rule of rules) {
       const { pattern, style, onPress } = rule;
       if (word.match(pattern)) {
@@ -34,6 +45,5 @@ export const HighlighterX = ({ text, rules }) => {
 
   return <Text>{renderTextWithRules(text, rules)}</Text>;
 };
-
 
 export default HighlighterX;
